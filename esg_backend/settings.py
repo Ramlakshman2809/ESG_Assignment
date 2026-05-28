@@ -143,6 +143,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50,
 }
 
-CORS_ALLOWED_ORIGINS = ["https://esg-assignment.vercel.app", "http://localhost:3000"]
+CORS_ALLOWED_ORIGINS = ["https://esg-assignment-seven.vercel.app", "http://localhost:3000"]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
