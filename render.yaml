@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: esg-backend
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py migrate
+      python manage.py seed_data
+    startCommand: gunicorn esg_backend.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: esg_backend.settings_production
+      - key: DATABASE_URL
+        value: sqlite:///db.sqlite3
+    autoDeploy: true
+    pullRequestPreviewsEnabled: true
+
+# Note: For the React frontend, deploy separately to:
+# - Vercel (recommended): Connect your GitHub repo
+# - Netlify: Connect your GitHub repo, set build command to "npm run build" and publish to "dist"
+# - Render: Not supported for static sites, use Vercel/Netlify instead
